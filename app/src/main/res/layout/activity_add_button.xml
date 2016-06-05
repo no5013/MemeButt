@@ -7,6 +7,77 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.asus.memebutt.Activity.AddButtonActivity">
+    tools:context=".Activity.AddMemeActivity">
+
+    <TextView
+        android:id="@+id/memeTitleSubject"
+        android:text="MEME TITLE"
+        android:textStyle="bold"
+        android:textSize="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <EditText
+        android:layout_below="@id/memeTitleSubject"
+        android:id="@+id/memeTitleField"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp" />
+
+    <TextView
+        android:id="@+id/memePictureSubject"
+        android:layout_below="@id/memeTitleField"
+        android:text="ADD PICTURE"
+        android:textStyle="bold"
+        android:textSize="20dp"
+        android:layout_marginBottom="15dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <ImageView
+        android:id="@+id/memePictureView"
+        android:layout_below="@id/memePictureSubject"
+        android:background="#848484"
+        android:layout_width="150dp"
+        android:layout_height="150dp" />
+
+    <Button
+        android:id="@+id/browsePictureButton"
+        android:text="browse picture"
+        android:layout_below="@id/memePictureView"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"/>
+
+    <TextView
+        android:id="@+id/addSoundSubject"
+        android:layout_below="@id/browsePictureButton"
+        android:text="ADD SOUND"
+        android:textStyle="bold"
+        android:textSize="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp"/>
+
+    <TextView
+        android:id="@+id/addSoundName"
+        android:layout_below="@+id/addSoundSubject"
+        android:text="NO SOUND (BROWSE ONLY EXTERNAL STORAGE)"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <Button
+        android:id="@+id/browseSoundButton"
+        android:text="browse sound"
+        android:layout_below="@id/addSoundName"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/addMemeButton"
+        android:text="ADD MEME"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+
 
 </RelativeLayout>
