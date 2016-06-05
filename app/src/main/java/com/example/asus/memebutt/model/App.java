@@ -11,22 +11,29 @@ import java.util.Observable;
  */
 public class App extends Observable{
 
-    private List<Meme> memes;
     private int currentMeme;
     public static App app;
 
     private App(){
-        memes = Storage.getInstance().getMemes();
+
     }
 
     public void changeCurrentMeme(int memeNo){
+        this.currentMeme = memeNo;
         this.notifyObservers();
         this.setChanged();
-        this.currentMeme = memeNo;
+    }
+
+    public List<Meme> getMemes() {
+        return Storage.getInstance().getMemes();
+    }
+
+    public void setCurrentMeme(int currentMeme) {
+        this.currentMeme = currentMeme;
     }
 
     public Meme getCurrentMeme(){
-        return memes.get(currentMeme);
+        return getMemes().get(currentMeme);
     }
 
     public static App getInstance(){

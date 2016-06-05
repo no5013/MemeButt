@@ -6,11 +6,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.MotionEvent;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.asus.memebutt.model.Adapter.MemeAdapter;
+import com.example.asus.memebutt.model.Adapter.RecyclerItemClickListener;
 import com.example.asus.memebutt.model.App;
 import com.example.asus.memebutt.model.Meme;
 
@@ -27,6 +31,8 @@ public class MainActivity extends AppCompatActivity implements Observer{
     FloatingActionButton libraryFab;
     RecyclerView memeRecycleView;
 
+    MemeAdapter memeAdapter;
+
     App app;
 
 
@@ -42,6 +48,7 @@ public class MainActivity extends AppCompatActivity implements Observer{
         memePicture.setImageResource(meme.getPicture());
         memeTitle.setText(meme.getTitle());
         button.setImageResource(meme.getButton());
+        mediaPlayer.release();
         mediaPlayer = MediaPlayer.create(this,meme.getSound());
     }
 
@@ -58,12 +65,17 @@ public class MainActivity extends AppCompatActivity implements Observer{
         libraryFab = (FloatingActionButton) findViewById(R.id.libraryFab);
         memeRecycleView = (RecyclerView) findViewById(R.id.meme_recycle_view);
 
+        memeAdapter = new MemeAdapter(app.getMemes());
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
         memeRecycleView.setLayoutManager(linearLayoutManager);
-
-
-
+        memeRecycleView.setAdapter(memeAdapter);
+        memeRecycleView.addOnItemTouchListener(new RecyclerItemClickListener(this, new RecyclerItemClickListener.OnItemClickListener() {
+                   public void onItemClick(View view, int position) {
+                        app.changeCurrentMeme(position);
+                    }
+                })
+        );
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
