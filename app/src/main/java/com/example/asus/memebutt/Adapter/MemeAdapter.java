@@ -1,5 +1,9 @@
 package com.example.asus.memebutt.Adapter;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -45,7 +49,11 @@ public class MemeAdapter extends RecyclerView.Adapter<MemeAdapter.MemeRecycleVie
     public void onBindViewHolder(MemeRecycleViewHolder holder, int position) {
         final Meme meme = memes.get(position);
         holder.memeTitle.setText(meme.getTitle());
-        holder.memePicture.setImageResource(meme.getPicture());
+        if(meme.canEdit())
+            holder.memePicture.setImageBitmap(BitmapFactory.decodeFile(meme.getPicture()));
+        else{
+            holder.memePicture.setImageResource(meme.getImageId());
+        }
     }
 
     @Override

@@ -7,13 +7,13 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:background="#d7d7d7"
+    android:background="@color/background_floating_material_dark"
     tools:context="com.example.asus.memebutt.Activity.LibraryActivity">
 
 
 
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
+        android:id="@+id/addMemeFab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
@@ -23,6 +23,8 @@
 
     <ListView
         android:id="@+id/memeListView"
+        android:divider="@android:color/transparent"
+        android:dividerHeight="10.0sp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"></ListView>
 

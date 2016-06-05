@@ -1,5 +1,7 @@
 package com.example.asus.memebutt.Activity;
 
+import android.content.Intent;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -22,6 +24,12 @@ public class LibraryActivity extends AppCompatActivity {
         this.initialize();
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        memeLibraryAdapter.notifyDataSetChanged();
+    }
+
     private void initialize(){
         memeListView = (ListView)findViewById(R.id.memeListView);
         memeLibraryAdapter = new MemeLibraryAdapter(this,R.layout.meme_library_cell,App.getInstance().getMemes());
@@ -31,8 +39,16 @@ public class LibraryActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 App.getInstance().setCurrentMeme(position);
-                System.out.println("FCK");
                 finish();
+            }
+        });
+
+        FloatingActionButton addMeme = (FloatingActionButton)findViewById(R.id.addMemeFab);
+        addMeme.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LibraryActivity.this,AddMemeActivity.class);
+                startActivity(intent);
             }
         });
     }

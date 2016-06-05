@@ -9,15 +9,42 @@ import android.widget.ImageButton;
 public class Meme {
 
     private String title;
-    private int picture;
-    private int button;
-    private int sound;
+    private String picture;
+    private int imageId;
+    private MemeButton button;
+    private String sound;
+    private boolean edit;
 
-    public Meme(String title , int picture , int button , int sound){
+    public Meme(String title , String picture , MemeButton button , String sound){
         this.title = title;
         this.picture = picture;
         this.button = button;
         this.sound = sound;
+        edit = true;
+    }
+
+    public Meme(String title , String picture , MemeButton button , String sound ,boolean edit){
+        this.title = title;
+        this.picture = picture;
+        this.button = button;
+        this.sound = sound;
+        this.edit = edit;
+    }
+
+    public void setImageId(int id){
+        this.imageId = id;
+    }
+
+    public int getImageId(){
+        return imageId;
+    }
+
+    public boolean canEdit() {
+        return edit;
+    }
+
+    public void setEdit(boolean edit) {
+        this.edit = edit;
     }
 
     public String getTitle() {
@@ -28,27 +55,27 @@ public class Meme {
         this.title = title;
     }
 
-    public int getPicture() {
+    public String getPicture() {
         return picture;
     }
 
-    public void setPicture(int picture) {
+    public void setPicture(String picture) {
         this.picture = picture;
     }
 
     public int getButton() {
-        return button;
+        return button.getButtonPicture();
     }
 
-    public void setButton(int button) {
+    public void setMemeButton(MemeButton button) {
         this.button = button;
     }
 
-    public int getSound() {
+    public String getSound() {
         return sound;
     }
 
-    public void setSound(int sound) {
+    public void setSound(String sound) {
         this.sound = sound;
     }
 

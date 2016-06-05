@@ -1,5 +1,6 @@
 package com.example.asus.memebutt.Adapter;
 
+import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,9 +10,12 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.asus.memebutt.R;
+import com.example.asus.memebutt.model.App;
 import com.example.asus.memebutt.model.Meme;
+import com.example.asus.memebutt.model.Storage;
 
 import java.util.List;
 
@@ -24,7 +28,7 @@ public class MemeLibraryAdapter extends ArrayAdapter<Meme> {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
         View v = convertView;
         if(v==null) {
             LayoutInflater vl = LayoutInflater.from(getContext());
@@ -32,12 +36,35 @@ public class MemeLibraryAdapter extends ArrayAdapter<Meme> {
         }
         TextView memeTitle = (TextView) v.findViewById(R.id.memeLibraryTitle);
 //        ImageButton editMemeButton = (ImageButton) v.findViewById(R.id.editMemeButton);
-//        ImageButton deleteMemeButton = (ImageButton) v.findViewById(R.id.deleteMemeButton);
-
+        ImageButton deleteMemeButton = (ImageButton) v.findViewById(R.id.deleteMemeButton);
+        ImageButton selectMemeButton = (ImageButton) v.findViewById(R.id.editMemeButton);
 
         Meme meme = getItem(position);
 
+        if(meme.canEdit()){
+            deleteMemeButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Storage.getInstance().deleteMeme(position);
+                    notifyDataSetChanged();
+                }
+            });
+        }else{
+            deleteMemeButton.setVisibility(View.GONE);
+        }
+
+        selectMemeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                App.getInstance().changeCurrentMeme(position);
+                ((Activity)getContext()).finish();
+            }
+        });
+
+
         memeTitle.setText(meme.getTitle());
+
+
 
 
         return v;

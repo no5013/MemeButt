@@ -15,7 +15,7 @@ public class App extends Observable{
     public static App app;
 
     private App(){
-
+        currentMeme = 0;
     }
 
     public void changeCurrentMeme(int memeNo){
@@ -28,12 +28,15 @@ public class App extends Observable{
         return Storage.getInstance().getMemes();
     }
 
-    public void setCurrentMeme(int currentMeme) {
-        this.currentMeme = currentMeme;
+    public Meme getCurrentMeme(){
+        if(currentMeme>=getMemes().size())
+            currentMeme = 0;
+        return getMemes().get(currentMeme);
     }
 
-    public Meme getCurrentMeme(){
-        return getMemes().get(currentMeme);
+    public void randomMeme(){
+        int randomMeme = (int)Math.floor(Math.random()*getMemes().size());
+        changeCurrentMeme(randomMeme);
     }
 
     public static App getInstance(){
