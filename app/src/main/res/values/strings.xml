@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">MemeBUTT</string>
+    <string name="title_activity_library">LibraryActivity</string>
 </resources>

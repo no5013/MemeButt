@@ -1,4 +1,4 @@
-package com.example.asus.memebutt.model.Adapter;
+package com.example.asus.memebutt.Adapter;
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.GestureDetector;

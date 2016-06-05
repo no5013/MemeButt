@@ -1,20 +1,20 @@
-package com.example.asus.memebutt;
+package com.example.asus.memebutt.Activity;
 
+import android.content.Intent;
 import android.media.MediaPlayer;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.MotionEvent;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.asus.memebutt.model.Adapter.MemeAdapter;
-import com.example.asus.memebutt.model.Adapter.RecyclerItemClickListener;
+import com.example.asus.memebutt.R;
+import com.example.asus.memebutt.Adapter.MemeAdapter;
+import com.example.asus.memebutt.Adapter.RecyclerItemClickListener;
 import com.example.asus.memebutt.model.App;
 import com.example.asus.memebutt.model.Meme;
 
@@ -41,6 +41,12 @@ public class MainActivity extends AppCompatActivity implements Observer{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         this.initComponent();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        this.setCurrentButton();
     }
 
     public void setCurrentButton() {
@@ -96,7 +102,8 @@ public class MainActivity extends AppCompatActivity implements Observer{
         libraryFab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                app.changeCurrentMeme((int)Math.floor(Math.random()*2));
+                Intent intent = new Intent(MainActivity.this,LibraryActivity.class);
+                startActivity(intent);
             }
         });
 

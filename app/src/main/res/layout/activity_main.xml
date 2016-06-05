@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.asus.memebutt.MainActivity">
+    tools:context=".Activity.MainActivity">
 
 
 
@@ -42,8 +42,10 @@
         android:layout_width="match_parent"
         android:layout_height="30dp"
         android:layout_above="@+id/meme_recycle_view"
-        android:background="#000000"
-        android:orientation="horizontal"></LinearLayout>
+        android:background="#ffffff"
+        android:orientation="horizontal">
+
+    </LinearLayout>
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/configFab"
@@ -71,6 +73,8 @@
         android:layout_alignParentBottom="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"></android.support.v7.widget.RecyclerView>
+
+
 
 
 </RelativeLayout>
