@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#2e2e2e"
     tools:context=".Activity.MainActivity">
 
 
 
     <ImageView
+        android:padding="10dp"
         android:id="@+id/memePicture"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -19,11 +22,14 @@
     <TextView
         android:id="@+id/memeTitle"
         android:text="TITLE"
+        android:textStyle="bold"
         android:textSize="30dp"
-        android:layout_width="wrap_content"
+        android:background="#181818"
+        android:layout_width="match_parent"
+        android:textColor="#ff4b4b"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:textAlignment="center" />
 
     <ImageButton
         android:text="PRESS"
@@ -40,10 +46,11 @@
     <LinearLayout
         android:id="@+id/search_meme"
         android:layout_width="match_parent"
-        android:layout_height="30dp"
+        android:layout_height="5dp"
         android:layout_above="@+id/meme_recycle_view"
-        android:background="#ffffff"
-        android:orientation="horizontal">
+        android:background="#181818"
+        android:orientation="horizontal"
+        >
 
     </LinearLayout>
 
@@ -55,9 +62,11 @@
         android:layout_above="@id/search_meme"
         android:layout_marginLeft="20dp"
         android:layout_marginBottom="20dp"
-         />
+        android:src="@drawable/dice"
+        app:backgroundTint="@color/background_floating_material_dark" />
 
     <android.support.design.widget.FloatingActionButton
+        android:src="@drawable/library_icon"
         android:id="@+id/libraryFab"
         android:layout_width="75dp"
         android:layout_height="75dp"
@@ -65,12 +74,16 @@
         android:layout_above="@id/search_meme"
         android:layout_marginRight="20dp"
         android:layout_marginBottom="20dp"
-        />
+        app:backgroundTint="@color/background_floating_material_dark" />
 
     <android.support.v7.widget.RecyclerView
         android:background="#000000"
         android:id="@id/meme_recycle_view"
         android:layout_alignParentBottom="true"
+        android:cacheColorHint="@android:color/transparent"
+        android:fastScrollEnabled="true"
+        android:persistentDrawingCache="scrolling"
+        android:scrollingCache="false"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"></android.support.v7.widget.RecyclerView>
 
