@@ -38,7 +38,7 @@ public class LibraryActivity extends AppCompatActivity {
         memeListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                App.getInstance().setCurrentMeme(position);
+                App.getInstance().changeCurrentMeme(position);
                 finish();
             }
         });
